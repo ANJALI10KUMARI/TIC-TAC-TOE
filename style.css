@@ -1,3 +1,4 @@
+/* Base Style */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -11,25 +12,32 @@ body {
 
 .container {
     text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
 #game-board {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
     margin: 20px auto;
 }
 
 .cell {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
     background: linear-gradient(145deg, #520324, #ff758c);
     border: 2px solid #ffffff;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 2rem;
     font-weight: bold;
     color: #ffffff;
     cursor: pointer;
@@ -39,6 +47,31 @@ body {
 
 .cell:hover {
     background: linear-gradient(145deg, #ff99c1, #ff85a1);
+}
+
+#status {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#reset-button,
+#winner-box button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+#reset-button {
+    background-color: #06ba15;
+    color: #ffffff;
+}
+
+#reset-button:hover {
+    background-color: #1a9334;
 }
 
 #winner-box {
@@ -53,7 +86,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
-    font-size: 20px;
+    font-size: 1.2rem;
     z-index: 1000;
 }
 
@@ -62,36 +95,45 @@ body {
 }
 
 #winner-box button {
-    padding: 10px 15px;
-    font-size: 16px;
-    color: #ffffff;
     background-color: #007BFF;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    color: #ffffff;
 }
 
 #winner-box button:hover {
     background-color: #0056b3;
 }
 
-#reset-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #06ba15;
-    color: #ffffff;
+#replay-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #000000, #00008B);
+    color: white;
     border: none;
-    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
 }
 
-#reset-button:hover {
-    background-color: #1a9334;
-}
-
-#status {
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: bold;
+/* Responsive Text Scaling */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    .cell {
+        font-size: 1.5rem;
+    }
+    #status {
+        font-size: 1rem;
+    }
+    #reset-button,
+    #winner-box button {
+        font-size: 0.9rem;
+    }
 }
